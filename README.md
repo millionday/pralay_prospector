@@ -7,9 +7,9 @@
 ### Multi-Source Business Leads Scraper — Chrome Extension
 
 [![Version](https://img.shields.io/badge/version-2.0.0-brightgreen?style=flat-square)](https://github.com/millionday/pralay-prospector/releases)
-[![Manifest](https://img.shields.io/badge/manifest-v3-blue?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/)
+[![Manifest](https://img.shields.io/badge/manifest-v3-blue?style=flat-square)](#)
 [![License](https://img.shields.io/badge/license-MIT-orange?style=flat-square)](LICENSE)
-[![Made by](https://img.shields.io/badge/made%20with%20❤%20by-Keshav%20Mishra%20%26%20Scoryn%20Co.-00E5A0?style=flat-square)](https://scoryn.co)
+[![Made by](https://img.shields.io/badge/made%20with%20❤%20by-Keshav%20Mishra%20%26%20Scoryn%20Co.-00E5A0?style=flat-square)](#)
 
 **Pralay Prospector** is a powerful Chrome extension that extracts business leads at scale from Google Maps, JustDial, and Bing Maps — all from a single, clean popup UI. Scrape names, phones, emails, WhatsApp numbers, ratings, addresses, social media, and more. Export to Excel, CSV, or JSON in one click.
 
