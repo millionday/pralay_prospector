@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Pralay Prospector — by Scoryn Co.",
+  "version": "2.0.0",
+  "description": "Advanced leads scraper: Google Maps, JustDial, Bing Maps & more. Extract business data at scale. Made with ❤ by Keshav Mishra & Scoryn Co.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.google.com/*",
+    "https://maps.google.com/*",
+    "https://*.google.com/*",
+    "https://www.justdial.com/*",
+    "https://justdial.com/*",
+    "https://www.bing.com/*",
+    "https://*.bing.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/maps/*",
+        "https://maps.google.com/*"
+      ],
+      "js": ["js/content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.justdial.com/*",
+        "https://justdial.com/*"
+      ],
+      "js": ["js/content_justdial.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.bing.com/maps*",
+        "https://www.bing.com/search*"
+      ],
+      "js": ["js/content_bing.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

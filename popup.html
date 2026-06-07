@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pralay Prospector — by Scoryn Co.</title>
+<link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="url(#logoGrad)"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="5" y1="2" x2="19" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00E5A0"/>
+              <stop offset="100%" stop-color="#00A8FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="brand">Pralay</span>
+        <span class="pro-badge">PRO</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="status-dot" id="statusDot" title="Idle"></div>
+    </div>
+  </header>
+
+  <!-- SCORYN BRAND STRIP -->
+  <div class="brand-strip">
+    Made with ❤ by <strong>Keshav Mishra</strong> &amp; <strong>Scoryn Co.</strong>
+  </div>
+
+  <!-- TAB NAV -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="scraper">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Scraper
+    </button>
+    <button class="tab-btn" data-tab="data">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+      Data <span class="count-badge" id="countBadge">0</span>
+    </button>
+    <button class="tab-btn" data-tab="export">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export
+    </button>
+    <button class="tab-btn" data-tab="settings">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </button>
+  </nav>
+
+  <!-- TAB: SCRAPER -->
+  <div class="tab-content active" id="tab-scraper">
+
+    <!-- SOURCE SELECTOR -->
+    <div class="source-selector">
+      <div class="source-label">Data Source</div>
+      <div class="source-btns">
+        <button class="source-btn active" data-source="google">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/></svg>
+          Google Maps
+        </button>
+        <button class="source-btn" data-source="justdial">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          JustDial
+        </button>
+        <button class="source-btn" data-source="bing">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 3l4 14 4-5 4 3V3"/></svg>
+          Bing Maps
+        </button>
+      </div>
+    </div>
+
+    <!-- STATUS CARD -->
+    <div class="status-card" id="statusCard">
+      <div class="status-icon idle" id="statusIcon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+      </div>
+      <div class="status-info">
+        <div class="status-label" id="statusLabel">Ready to Scrape</div>
+        <div class="status-sub" id="statusSub">Select a source and navigate to it</div>
+      </div>
+    </div>
+
+    <!-- SOURCE HINT -->
+    <div class="source-hint-bar">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span id="sourceHint">Navigate to <strong>Google Maps</strong> and run a search</span>
+    </div>
+
+    <!-- MAP CHECK WARNING -->
+    <div class="map-warning" id="mapWarning" style="display:none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Please navigate to the correct source page first
+    </div>
+
+    <!-- PROGRESS SECTION -->
+    <div class="progress-section" id="progressSection" style="display:none">
+      <div class="progress-header">
+        <span class="progress-label">Scraping Progress</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-shimmer"></div>
+      </div>
+      <div class="progress-stats">
+        <div class="stat-item">
+          <span class="stat-val" id="statExtracted">0</span>
+          <span class="stat-key">Extracted</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-val" id="statScrolls">0</span>
+          <span class="stat-key">Scrolls</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-val" id="statErrors">0</span>
+          <span class="stat-key">Errors</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-val" id="statElapsed">0s</span>
+          <span class="stat-key">Elapsed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div class="limit-row">
+        <label class="field-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Max Leads
+        </label>
+        <div class="limit-input-wrap">
+          <input type="number" id="maxLeads" value="500" min="1" max="10000" class="limit-input">
+          <div class="limit-presets">
+            <button class="preset-btn" data-val="50">50</button>
+            <button class="preset-btn" data-val="100">100</button>
+            <button class="preset-btn" data-val="500">500</button>
+            <button class="preset-btn" data-val="1000">1K</button>
+            <button class="preset-btn" data-val="10000">Max</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="delay-row">
+        <label class="field-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          Scroll Delay: <span id="delayVal">1.5s</span>
+        </label>
+        <input type="range" id="scrollDelay" min="500" max="5000" value="1500" step="100" class="range-slider">
+        <div class="range-labels"><span>Fast</span><span>Careful</span></div>
+      </div>
+    </div>
+
+    <!-- MAIN ACTIONS -->
+    <div class="action-row">
+      <button class="btn-start" id="startBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21 5,3"/></svg>
+        Start Scraping
+      </button>
+      <button class="btn-stop" id="stopBtn" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+        Stop
+      </button>
+    </div>
+
+    <button class="btn-clear" id="clearBtn">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      Clear All Data
+    </button>
+
+    <!-- LIVE LOG -->
+    <div class="log-section">
+      <div class="log-header">
+        <span>Live Log</span>
+        <button class="log-clear-btn" id="clearLogBtn">Clear</button>
+      </div>
+      <div class="log-container" id="logContainer">
+        <div class="log-entry info">Pralay Pro v2.0 loaded. Made with ❤ by Keshav Mishra &amp; Scoryn Co.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: DATA -->
+  <div class="tab-content" id="tab-data">
+    <div class="data-toolbar">
+      <input type="text" class="search-input" id="dataSearch" placeholder="🔍  Search leads…">
+      <button class="btn-mini" id="copyAllBtn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy
+      </button>
+    </div>
+    <!-- Source filter pills -->
+    <div class="source-filters">
+      <button class="source-filter-btn active" data-filter="all">All</button>
+      <button class="source-filter-btn" data-filter="google">Google Maps</button>
+      <button class="source-filter-btn" data-filter="justdial">JustDial</button>
+      <button class="source-filter-btn" data-filter="bing">Bing Maps</button>
+    </div>
+    <div class="data-table-wrap" id="dataTableWrap">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">📍</div>
+        <div class="empty-title">No data yet</div>
+        <div class="empty-sub">Start scraping on Google Maps, JustDial, or Bing Maps</div>
+      </div>
+      <table class="data-table" id="dataTable" style="display:none">
+        <thead><tr id="tableHead"></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: EXPORT -->
+  <div class="tab-content" id="tab-export">
+    <div class="export-summary">
+      <div class="export-count"><span id="exportCount">0</span> leads ready</div>
+      <div class="export-sub">Files branded as <strong>Pralay_Pro_by_ScorynCo</strong></div>
+    </div>
+
+    <div class="export-formats">
+      <button class="export-btn excel" id="exportExcel">
+        <div class="export-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#1d6f42"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="monospace">XLS</text></svg>
+        </div>
+        <div class="export-info">
+          <div class="export-name">Excel (.xls)</div>
+          <div class="export-desc">Spreadsheet with branding row</div>
+        </div>
+        <div class="export-arrow">→</div>
+      </button>
+
+      <button class="export-btn csv" id="exportCSV">
+        <div class="export-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#2196f3"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="monospace">CSV</text></svg>
+        </div>
+        <div class="export-info">
+          <div class="export-name">CSV (.csv)</div>
+          <div class="export-desc">Universal plain text format</div>
+        </div>
+        <div class="export-arrow">→</div>
+      </button>
+
+      <button class="export-btn json" id="exportJSON">
+        <div class="export-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#ff6b35"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">JSON</text></svg>
+        </div>
+        <div class="export-info">
+          <div class="export-name">JSON (.json)</div>
+          <div class="export-desc">Structured with meta + branding</div>
+        </div>
+        <div class="export-arrow">→</div>
+      </button>
+    </div>
+
+    <div class="field-selector">
+      <div class="field-sel-header">
+        <span>Custom Export Fields</span>
+        <div class="field-actions">
+          <button class="btn-link" id="selectAllFields">All</button>
+          <button class="btn-link" id="selectNoneFields">None</button>
+          <button class="btn-link" id="selectBasicFields">Basic</button>
+        </div>
+      </div>
+      <div class="field-groups" id="fieldGroups"></div>
+    </div>
+  </div>
+
+  <!-- TAB: SETTINGS -->
+  <div class="tab-content" id="tab-settings">
+    <div class="settings-section">
+      <div class="section-title">Extraction Options</div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Phone Numbers</div>
+          <div class="setting-desc">All available phone numbers</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setPhone" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Email &amp; Socials</div>
+          <div class="setting-desc">Email, Facebook, Instagram, Twitter</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setEmailSocial" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract WhatsApp</div>
+          <div class="setting-desc">WhatsApp number (JustDial)</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setWhatsApp" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Opening Hours</div>
+          <div class="setting-desc">Full weekly schedule</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setHours" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Coordinates</div>
+          <div class="setting-desc">Latitude &amp; longitude</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setCoords" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Featured Image</div>
+          <div class="setting-desc">Business hero/cover image URL</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setImages" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Extract Description</div>
+          <div class="setting-desc">Business tagline / description</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setDescription" checked><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-title">Behavior</div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Auto-open Details</div>
+          <div class="setting-desc">Click each result to extract deep data (Google Maps)</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setAutoOpen" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Deduplicate Results</div>
+          <div class="setting-desc">Skip already-seen places</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setDedup" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <div class="setting-label">Auto-export on Stop</div>
+          <div class="setting-desc">Download CSV when scraping finishes</div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="setAutoExport"><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-title">About</div>
+      <div class="about-card">
+        <div class="about-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="url(#aboutGrad)"/>
+            <defs>
+              <linearGradient id="aboutGrad" x1="5" y1="2" x2="19" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00E5A0"/>
+                <stop offset="100%" stop-color="#00A8FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div>
+            <div class="about-name">Pralay Pro v2.0</div>
+            <div class="about-company">by Scoryn Co.</div>
+          </div>
+        </div>
+        <div class="about-desc">Multi-source lead extraction from Google Maps, JustDial &amp; Bing Maps. Auto-scroll, deep field extraction, flexible export.</div>
+        <div class="about-author">Made with ❤ by <strong>Keshav Mishra</strong> &amp; <strong>Scoryn Co.</strong></div>
+        <div class="about-sources">
+          <span class="src-badge google">Google Maps</span>
+          <span class="src-badge justdial">JustDial</span>
+          <span class="src-badge bing">Bing Maps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER BRAND -->
+  <footer class="footer-brand">
+    <span>Pralay Pro</span>
+    <span class="footer-dot">·</span>
+    <span>Made with ❤ by Keshav Mishra &amp; Scoryn Co.</span>
+  </footer>
+
+</div>
+<script src="js/popup.js"></script>
+</body>
+</html>
